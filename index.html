@@ -1,11 +1,614 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rafael TEIXEIRA</title>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <title>Rafael TEIXEIRA</title>
+
+  <!-- SEO/opengraph (aucun texte supplémentaire à l'écran) -->
+  <meta name="description" content="Rafael TEIXEIRA" />
+  <meta property="og:title" content="Rafael TEIXEIRA" />
+  <meta property="og:description" content="Rafael TEIXEIRA" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="color-scheme" content="light dark" />
+
+  <style>
+    :root {
+      --bg-1: #0b1020;
+      --bg-2: #101a3a;
+      --fg: #ffffff;
+      --glow: rgba(130, 200, 255, 0.5);
+
+      --text-size: clamp(2.8rem, 8vw + 1rem, 12rem);
+      --weight: 800;
+
+      --anim-speed: 22s;
+      --noise-opacity: 0.06;
+
+      --accent-1: #6ee7ff;
+      --accent-2: #c084fc;
+      --accent-3: #22d3ee;
+
+      /* dégradé de texte */
+      --text-gradient: linear-gradient(
+        120deg,
+        var(--accent-1),
+        var(--accent-2),
+        var(--accent-3)
+      );
+    }
+
+    /* Thèmes (T pour cycler) */
+    body.theme-aurora {
+      --bg-1: #09111d;
+      --bg-2: #14243d;
+      --glow: rgba(110, 231, 255, 0.45);
+      --accent-1: #6ee7ff;
+      --accent-2: #a78bfa;
+      --accent-3: #22d3ee;
+    }
+    body.theme-sunset {
+      --bg-1: #1a0b0b;
+      --bg-2: #371616;
+      --glow: rgba(255, 140, 110, 0.45);
+      --accent-1: #ff7a7a;
+      --accent-2: #ffb86b;
+      --accent-3: #ffd166;
+    }
+    body.theme-ocean {
+      --bg-1: #051416;
+      --bg-2: #0b2c33;
+      --glow: rgba(110, 255, 200, 0.35);
+      --accent-1: #00f5d4;
+      --accent-2: #00bbf9;
+      --accent-3: #00e5ff;
+    }
+
+    /* Reset + layout */
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 800px at 70% 20%, var(--bg-2), transparent)
+          fixed,
+        radial-gradient(1200px 800px at 30% 80%, var(--bg-2), transparent) fixed,
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      color: var(--fg);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+        Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol";
+      /* Conserver du GPU compositing pour la fluidité */
+      will-change: background-position;
+      animation: bg-pan var(--anim-speed) linear infinite;
+    }
+
+    /* Animation du fond */
+    @keyframes bg-pan {
+      0% {
+        background-position:
+          0px 0px,
+          0px 0px,
+          0% 0%;
+      }
+      100% {
+        background-position:
+          200px 0px,
+          -200px 0px,
+          0% 100%;
+      }
+    }
+
+    /* Grain très léger en overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -50%;
+      pointer-events: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');
+      opacity: var(--noise-opacity);
+      mix-blend-mode: soft-light;
+      animation: drift 12s linear infinite;
+    }
+    @keyframes drift {
+      from {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1.2);
+      }
+      to {
+        transform: translate3d(2%, -2%, 0) rotate(1turn) scale(1.2);
+      }
+    }
+
+    /* Le seul élément visible: le NOM */
+    h1 {
+      position: relative;
+      margin: 0;
+      font-size: var(--text-size);
+      font-weight: var(--weight);
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+      text-align: center;
+      padding: 2vmin 4vmin;
+      /* Texte en dégradé animé */
+      background: var(--text-gradient);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: text-shift 10s ease-in-out infinite;
+      /* Glow doux */
+      filter: drop-shadow(0 10px 35px var(--glow));
+      /* 3D tilt fluide */
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease, filter 0.3s ease;
+      user-select: none;
+      cursor: default;
+      /* Données pour le glitch (utilisées par ::before/::after) */
+    }
+    @keyframes text-shift {
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    /* Reflet (R pour toggle): macOS/iOS WebKit seulement, silencieux ailleurs */
+    body.reflection h1 {
+      -webkit-box-reflect: below 0.1em
+        linear-gradient(transparent 0, rgba(255, 255, 255, 0.04));
+    }
+
+    /* Glitch (clic ou G) */
+    h1.glitch {
+      position: relative;
+      filter: drop-shadow(0 16px 40px rgba(255, 80, 120, 0.25));
+    }
+    h1.glitch::before,
+    h1.glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      color: transparent;
+      background: var(--text-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      animation: glitchShift 2s infinite steps(12);
+    }
+    h1.glitch::before {
+      transform: translate(-0.5px, 0);
+      filter: drop-shadow(-2px 0 0 rgba(0, 255, 255, 0.3));
+    }
+    h1.glitch::after {
+      transform: translate(0.5px, 0);
+      filter: drop-shadow(2px 0 0 rgba(255, 0, 128, 0.3));
+      animation-direction: reverse;
+    }
+    @keyframes glitchShift {
+      0% {
+        clip-path: inset(0 0 85% 0);
+      }
+      10% {
+        clip-path: inset(15% 0 60% 0);
+      }
+      20% {
+        clip-path: inset(40% 0 35% 0);
+      }
+      30% {
+        clip-path: inset(70% 0 5% 0);
+      }
+      40% {
+        clip-path: inset(0 0 85% 0);
+      }
+      50% {
+        clip-path: inset(10% 0 50% 0);
+      }
+      60% {
+        clip-path: inset(40% 0 40% 0);
+      }
+      70% {
+        clip-path: inset(75% 0 3% 0);
+      }
+      80% {
+        clip-path: inset(5% 0 75% 0);
+      }
+      90% {
+        clip-path: inset(35% 0 35% 0);
+      }
+      100% {
+        clip-path: inset(0 0 85% 0);
+      }
+    }
+
+    /* Canvas effets derrière le texte (particules, confetti) */
+    canvas#fx {
+      position: fixed;
+      inset: 0;
+      z-index: -1; /* fond uniquement */
+      display: block;
+      opacity: 0.9;
+    }
+
+    /* Mode sans animation (M pour toggle ou prefers-reduced-motion) */
+    @media (prefers-reduced-motion: reduce) {
+      body:not(.motion) {
+        animation: none !important;
+      }
+      body:not(.motion)::before {
+        animation: none !important;
+      }
+      body:not(.motion) h1 {
+        animation: none !important;
+      }
+      body:not(.motion) h1.glitch::before,
+      body:not(.motion) h1.glitch::after {
+        animation: none !important;
+      }
+    }
+    /* Classe explicitement sans animation (appliquée via JS quand motion=false) */
+    body.no-motion {
+      animation: none !important;
+    }
+    body.no-motion::before,
+    body.no-motion h1,
+    body.no-motion h1.glitch::before,
+    body.no-motion h1.glitch::after {
+      animation: none !important;
+    }
+
+    /* Light/dark auto via thème + double-clic pour basculer */
+    @media (prefers-color-scheme: light) {
+      body.auto-scheme {
+        --fg: #060606;
+        --noise-opacity: 0.04;
+      }
+    }
+  </style>
 </head>
-<body>
-    <h1>Rafael TEIXEIRA</h1>
+<body class="theme-aurora auto-scheme motion reflection">
+  <!-- Le seul contenu visible -->
+  <h1 id="name" data-text="Rafael TEIXEIRA" aria-label="Rafael TEIXEIRA">Rafael TEIXEIRA</h1>
+
+  <script>
+    // Utilitaires stockage
+    const store = {
+      get(key, fallback) {
+        try {
+          const v = localStorage.getItem(key);
+          return v === null ? fallback : JSON.parse(v);
+        } catch {
+          return fallback;
+        }
+      },
+      set(key, value) {
+        try {
+          localStorage.setItem(key, JSON.stringify(value));
+        } catch {}
+      },
+    };
+
+    const body = document.body;
+    const h1 = document.getElementById("name");
+
+    // Appliquer préférences mémorisées
+    (function applyPrefs() {
+      const theme = store.get("theme", "aurora");
+      const motion = store.get("motion", true);
+      const glitch = store.get("glitch", false);
+      const reflect = store.get("reflect", true);
+      const scheme = store.get("scheme", "auto"); // auto|light|dark
+
+      // thème
+      body.classList.remove("theme-aurora", "theme-sunset", "theme-ocean");
+      body.classList.add(`theme-${theme}`);
+
+      // motion
+      body.classList.toggle("no-motion", !motion);
+      body.classList.toggle("motion", motion);
+
+      // glitch
+      h1.classList.toggle("glitch", glitch);
+
+      // reflection
+      body.classList.toggle("reflection", reflect);
+
+      // scheme light/dark
+      body.classList.remove("scheme-light", "scheme-dark", "auto-scheme");
+      if (scheme === "auto") body.classList.add("auto-scheme");
+      else body.classList.add(`scheme-${scheme}`);
+    })();
+
+    // Tilt 3D en fonction du pointeur
+    const tilt = (() => {
+      let rect = null;
+      let raf = 0;
+
+      function updateRect() {
+        rect = h1.getBoundingClientRect();
+      }
+      updateRect();
+      window.addEventListener("resize", updateRect);
+
+      function onMove(e) {
+        if (!rect) return;
+        const isTouch = e.touches && e.touches.length;
+        const x = isTouch ? e.touches[0].clientX : e.clientX;
+        const y = isTouch ? e.touches[0].clientY : e.clientY;
+
+        const px = (x - rect.left) / rect.width - 0.5;
+        const py = (y - rect.top) / rect.height - 0.5;
+
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const rotateX = py * -6; // inclinaison verticale
+          const rotateY = px * 8; // inclinaison horizontale
+          const translateZ = 8; // léger relief
+          h1.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        });
+      }
+
+      function resetTilt() {
+        h1.style.transform = "none";
+      }
+
+      window.addEventListener("mousemove", onMove, { passive: true });
+      window.addEventListener("touchmove", onMove, { passive: true });
+      window.addEventListener("mouseleave", resetTilt);
+      window.addEventListener("touchend", resetTilt);
+    })();
+
+    // Canvas effets (particules + confetti)
+    const fx = (() => {
+      const canvas = document.createElement("canvas");
+      canvas.id = "fx";
+      const ctx = canvas.getContext("2d");
+      document.body.appendChild(canvas);
+
+      let w = 0,
+        h = 0,
+        dpr = Math.max(1, window.devicePixelRatio || 1);
+      let particles = [];
+      let confetti = [];
+      let running = true;
+
+      function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      window.addEventListener("resize", resize);
+      resize();
+
+      function rand(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      // Particules lentes
+      function initParticles(count = Math.min(100, Math.floor((w * h) / 20000))) {
+        particles = Array.from({ length: count }, () => ({
+          x: rand(0, w),
+          y: rand(0, h),
+          vx: rand(-0.05, 0.05),
+          vy: rand(0.02, 0.08),
+          r: rand(0.4, 1.5),
+          a: rand(0.1, 0.5),
+        }));
+      }
+      initParticles();
+
+      function spawnConfetti(n = 120) {
+        for (let i = 0; i < n; i++) {
+          confetti.push({
+            x: rand(0, w),
+            y: -10,
+            vx: rand(-1.2, 1.2),
+            vy: rand(1.2, 3.2),
+            g: rand(0.02, 0.06),
+            s: rand(3, 6),
+            rot: rand(0, Math.PI * 2),
+            vr: rand(-0.2, 0.2),
+            hue: rand(0, 360),
+            life: rand(140, 220),
+          });
+        }
+      }
+
+      // Respecter le mode no-motion
+      const mo = new MutationObserver(() => {
+        running = !document.body.classList.contains("no-motion");
+      });
+      mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+      // Pause quand onglet caché
+      document.addEventListener("visibilitychange", () => {
+        running = !document.hidden && !document.body.classList.contains("no-motion");
+      });
+
+      function step() {
+        requestAnimationFrame(step);
+        if (!running) return;
+
+        ctx.clearRect(0, 0, w, h);
+
+        // Particules
+        ctx.save();
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y > h) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+          ctx.fill();
+        }
+        ctx.restore();
+
+        // Confetti
+        for (let i = confetti.length - 1; i >= 0; i--) {
+          const c = confetti[i];
+          c.vy += c.g;
+          c.x += c.vx;
+          c.y += c.vy;
+          c.rot += c.vr;
+          c.life -= 1;
+
+          // feuille qui "flippe": largeur varie
+          const wleaf = c.s * (0.6 + Math.sin(c.rot) * 0.4);
+          const hleaf = c.s * 2;
+
+          ctx.save();
+          ctx.translate(c.x, c.y);
+          ctx.rotate(c.rot * 0.2);
+          ctx.fillStyle = `hsl(${c.hue}, 85%, 60%)`;
+          ctx.globalAlpha = Math.max(0, Math.min(1, c.life / 60));
+          ctx.fillRect(-wleaf / 2, -hleaf / 2, wleaf, hleaf);
+          ctx.restore();
+
+          if (c.y > h + 20 || c.life <= 0) confetti.splice(i, 1);
+        }
+      }
+      step();
+
+      return { spawnConfetti, initParticles, resize };
+    })();
+
+    // Raccourcis et interactions
+    function cycleTheme() {
+      const classes = ["aurora", "sunset", "ocean"];
+      const current = (Array.from(document.body.classList).find((c) =>
+        c.startsWith("theme-")
+      ) || "theme-aurora").replace("theme-", "");
+      const next = classes[(classes.indexOf(current) + 1) % classes.length];
+      document.body.classList.remove("theme-aurora", "theme-sunset", "theme-ocean");
+      document.body.classList.add(`theme-${next}`);
+      store.set("theme", next);
+    }
+
+    function toggleMotion() {
+      const isNoMotion = document.body.classList.toggle("no-motion");
+      document.body.classList.toggle("motion", !isNoMotion);
+      store.set("motion", !isNoMotion);
+    }
+
+    function toggleGlitch() {
+      h1.classList.toggle("glitch");
+      store.set("glitch", h1.classList.contains("glitch"));
+    }
+
+    function toggleReflection() {
+      document.body.classList.toggle("reflection");
+      store.set("reflect", document.body.classList.contains("reflection"));
+    }
+
+    function toggleScheme() {
+      // alterne auto -> light -> dark
+      const hasAuto = document.body.classList.contains("auto-scheme");
+      const hasLight = document.body.classList.contains("scheme-light");
+      const hasDark = document.body.classList.contains("scheme-dark");
+
+      document.body.classList.remove("auto-scheme", "scheme-light", "scheme-dark");
+
+      let next = "auto";
+      if (hasAuto) next = "light";
+      else if (hasLight) next = "dark";
+      else next = "auto";
+
+      if (next === "auto") document.body.classList.add("auto-scheme");
+      else document.body.classList.add(`scheme-${next}`);
+
+      store.set("scheme", next);
+    }
+
+    // Clic: glitch
+    h1.addEventListener("click", toggleGlitch);
+
+    // Double-clic: clair/sombre (schéma)
+    h1.addEventListener("dblclick", toggleScheme);
+
+    // Touch courte: légère pulsation
+    let touchTimer = 0;
+    h1.addEventListener("touchstart", () => {
+      h1.style.transition = "transform 0.2s ease";
+      h1.style.transform += " scale(1.03)";
+      clearTimeout(touchTimer);
+      touchTimer = setTimeout(() => {
+        h1.style.transform = h1.style.transform.replace(/ scale\(1\.03\)/, "");
+      }, 220);
+    });
+
+    // Clavier
+    window.addEventListener("keydown", (e) => {
+      const key = e.key.toLowerCase();
+      if (key === "t") cycleTheme();
+      else if (key === "m") toggleMotion();
+      else if (key === "g") toggleGlitch();
+      else if (key === "r") toggleReflection();
+      else if (key === "c") fx.spawnConfetti();
+      // Astuce: ouvre la console pour voir l'aide
+      else if (key === "?") {
+        // Aucune UI à l'écran, aide seulement en console
+        console.log(
+          [
+            "Raccourcis:",
+            "- T: changer de thème (aurora/sunset/ocean)",
+            "- M: activer/désactiver les animations",
+            "- G: activer/désactiver le glitch",
+            "- R: activer/désactiver le reflet",
+            "- C: confetti",
+            "- ?: afficher cette aide (console)",
+            "Interactions:",
+            "- Clic: glitch",
+            "- Double-clic: clair/sombre (schéma)",
+            "- Touch: pulsation",
+          ].join("\n")
+        );
+      }
+    });
+
+    // Astuce: afficher automatiquement l'aide une fois (si jamais)
+    if (!store.get("helpShown", false)) {
+      store.set("helpShown", true);
+      setTimeout(() => {
+        console.log(
+          [
+            "Bienvenue 👋",
+            "Raccourcis:",
+            "- T: changer de thème (aurora/sunset/ocean)",
+            "- M: activer/désactiver les animations",
+            "- G: activer/désactiver le glitch",
+            "- R: activer/désactiver le reflet",
+            "- C: confetti",
+            "- ?: afficher cette aide (console)",
+            "Interactions:",
+            "- Clic: glitch",
+            "- Double-clic: clair/sombre (schéma)",
+            "- Touch: pulsation",
+          ].join("\n")
+        );
+      }, 600);
+    }
+  </script>
 </body>
 </html>
