@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maquette WR312D</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="site-bg">
+  <div class="site-container">
+    <header class="header" role="banner">
+      <nav class="nav" aria-label="Navigation principale">
+        <div class="nav__inner">
+          <a class="nav__logo" href="#" aria-label="Accueil - Your Logo">
+            <span class="nav__logo-text">YOUR LOGO</span>
+          </a>
+          <ul id="nav-primary" class="nav__list">
+            <li class="nav__item">
+              <a class="nav__link nav__link--active" href="#" aria-current="page">Home</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#">Services <span class="nav__caret" aria-hidden="true">▾</span></a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#">Industries <span class="nav__caret" aria-hidden="true">▾</span></a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#">Portfolio</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#">Company <span class="nav__caret" aria-hidden="true">▾</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </div>
+  <!-- HERO en dehors de site-container -->
+  <section class="hero" aria-label="Bannière principale">
+    <div class="hero__media" aria-hidden="false">
+      <img class="hero__img" src="images/eolienne.jpg" alt="Éoliennes" />
+    </div>
+    <div class="hero__inner">
+      <h1 class="hero__title">We Produce the<br>Legacy of<br>Excellence</h1>
+      <a class="btn hero__cta" href="#contact" role="button" aria-label="Contact us">Contact us</a>
+    </div>
+  </section>
+  <section class="about-section">
+  <div class="about-mouse-logo">
+    <!-- SVG Souris centrée -->
+    <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Scroll down">
+      <rect x="1.5" y="1.5" width="21" height="33" rx="10.5" stroke="#111" stroke-width="3"/>
+      <circle cx="12" cy="10" r="2" fill="#111"/>
+    </svg>
+  </div>
+  <h2 class="about-title">ABOUT</h2>
+  <div class="about-grid">
+    <div class="about-item about-item--image">
+      <div class="about-img-round">
+        <img src="images/Rectangle 6.jpg" alt="Building modern" />
+      </div>
+    </div>
+    <div class="about-item about-item--text">
+      <h3 class="about-subtitle">Improvement Through<br>Meaningful Innovation</h3>
+      <p class="about-desc">
+        Committed to provide superior consultancy and building trusted services through the newest innovations in the industries with consideration for the environment.<br>
+        Dedicated to sustainable and economical capacity and value the customer satisfaction. We accomplish great things by working efficiently and with excellence.
+      </p>
+    </div>
+    <div class="about-item about-item--text about-item--text2">
+      <h3 class="about-subtitle">Integrity, Synergy,<br>Quality and Value</h3>
+      <p class="about-desc">
+        Conduct through strong standards and transparency. Operate as a cohesive team and collaborate to provide a key to success and pursuit of improvement that our clients expect.<br>
+        We are capable to complete management, consultancy, construction works and consider that understanding and appreciation the client requirements is a real road to success.
+      </p>
+    </div>
+    <div class="about-item about-item--image">
+      <div class="about-img-round">
+        <img src="images/Rectangle 6H.jpg" alt="Discovery Market" />
+      </div>
+    </div>
+  </div>
+</section>
+<section class="industries-section">
+  <div class="industries-inner">
+    <h2 class="industries-title">INDUSTRIES</h2>
+    <div class="industries-list">
+      <div class="industry-item">
+        <div class="industry-icon">
+          <!-- Energy SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" aria-label="Energy" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 6L14 26H22V42L34 18H26L24 6Z" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="industry-label">Energy</div>
+      </div>
+      <div class="industry-item">
+        <div class="industry-icon">
+          <!-- Construction SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" aria-label="Construction" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12" y="20" width="8" height="16" stroke="#222" stroke-width="2" fill="none"/>
+            <rect x="28" y="12" width="8" height="24" stroke="#222" stroke-width="2" fill="none"/>
+            <path d="M12 20L24 8L36 12" stroke="#222" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="industry-label">Construction</div>
+      </div>
+      <div class="industry-item">
+        <div class="industry-icon">
+          <!-- Port Services SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" aria-label="Port Services" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 32C14 32 19 28 24 28C29 28 34 32 34 32" stroke="#222" stroke-width="2"/>
+            <rect x="20" y="14" width="8" height="10" stroke="#222" stroke-width="2" fill="none"/>
+            <rect x="22" y="8" width="4" height="6" stroke="#222" stroke-width="2" fill="none"/>
+            <line x1="24" y1="24" x2="24" y2="28" stroke="#222" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="industry-label">Port Services</div>
+      </div>
+      <div class="industry-item">
+        <div class="industry-icon">
+          <!-- IT SVG -->
+          <svg width="48" height="48" viewBox="0 0 48 48" aria-label="Information Technology" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="16" width="28" height="16" rx="2" stroke="#222" stroke-width="2" fill="none"/>
+            <rect x="20" y="34" width="8" height="2" rx="1" fill="#222"/>
+          </svg>
+        </div>
+        <div class="industry-label">Information Technology</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="video-section">
+  <div class="video-image-container">
+    <img src="images/Rectangle 12.jpg" alt="Watch our video" class="video-image"/>
+    <a href="#" class="video-play">
+      <span class="video-play-icon">
+        <!-- Play SVG -->
+        <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="18" fill="rgba(255,255,255,0.8)"/>
+          <polygon points="14,11 26,18 14,25" fill="#222"/>
+        </svg>
+      </span>
+      <span class="video-play-text">Watch our video</span>
+    </a>
+  </div>
+</section>
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <h2 class="testimonials-title">WHAT CLIENTS SAY</h2>
+    <p class="testimonials-subtitle">
+      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+    </p>
+    <div class="testimonials-list">
+      <div class="testimonial-card">
+        <div class="testimonial-photo">
+          <img src="images/annette.png" alt="Annette Black photo" />
+        </div>
+        <div class="testimonial-name">Annette Black</div>
+        <div class="testimonial-role">Head officer</div>
+        <div class="testimonial-text">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
+        </div>
+        <div class="testimonial-logo">
+          <img src="images/image 1.png" alt="Company logo" />
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-photo">
+          <img src="images/jacob.png" alt="Jacob Jones photo" />
+        </div>
+        <div class="testimonial-name">Jacob Jones</div>
+        <div class="testimonial-role">Head officer</div>
+        <div class="testimonial-text">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
+        </div>
+        <div class="testimonial-logo">
+          <img src="images/image 1.png" alt="Company logo" />
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-photo">
+          <img src="images/leslie.png" alt="Leslie Alexander photo" />
+        </div>
+        <div class="testimonial-name">Leslie Alexander</div>
+        <div class="testimonial-role">Head officer</div>
+        <div class="testimonial-text">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.
+        </div>
+        <div class="testimonial-logo">
+          <img src="images/image 1.png" alt="Company logo" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="blog-section">
+  <div class="blog-inner">
+    <h2 class="blog-title">BLOG</h2>
+    <div class="blog-list">
+      <div class="blog-card">
+        <div class="blog-card-img">
+          <img src="images/Rectangle 4.png" alt="Wind turbine in field" />
+        </div>
+        <div class="blog-card-date">18 Sen 2022</div>
+        <div class="blog-card-head">Amet minim mollit non deserunt ullamco est sit aliqua</div>
+        <div class="blog-card-text">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-img">
+          <img src="images/Rectangle 5.png" alt="Cargo ship in port" />
+        </div>
+        <div class="blog-card-date">18 Sen 2022</div>
+        <div class="blog-card-head">Amet minim mollit non deserunt ullamco est sit aliqua</div>
+        <div class="blog-card-text">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-card-img">
+          <img src="images/Rectangle 7.png" alt="People in meeting" />
+        </div>
+        <div class="blog-card-date">18 Sen 2022</div>
+        <div class="blog-card-head">Amet minim mollit non deserunt ullamco est sit aliqua</div>
+        <div class="blog-card-text">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+        </div>
+      </div>
+    </div>
+    <div class="blog-btn-row">
+      <a href="#" class="blog-btn">View all</a>
+    </div>
+  </div>
+</section>
+<section class="contactus-section">
+  <div class="contactus-inner">
+    <span class="contactus-title">Contact us</span>
+    <a href="#contact" class="contactus-btn">Contact us</a>
+  </div>
+</section>
+<section class="contact-form-section">
+  <div class="contact-form-grid">
+    <div class="contact-form-info">
+      <h2 class="contact-form-title">CONTACT US</h2>
+      <address class="contact-form-address">
+        4517 Washington Ave. Manchester,<br>
+        Kentucky 39495<br><br>
+        <a href="mailto:alma.lawson@example.com" class="contact-form-mail">alma.lawson@example.com</a><br><br>
+        <a href="tel:+17025550122" class="contact-form-phone">(702) 555-0122</a>
+      </address>
+    </div>
+    <form class="contact-form-fields">
+      <input type="text" class="contact-input" placeholder="Full name" autocomplete="off" />
+      <input type="text" class="contact-input" placeholder="Phone number" autocomplete="off" />
+      <input type="email" class="contact-input" placeholder="Email Address" autocomplete="off" />
+      <textarea class="contact-textarea" placeholder="Enter text"></textarea>
+      <div class="contact-form-actions">
+        <button type="submit" class="contact-form-btn">Send</button>
+      </div>
+    </form>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">YOUR LOGO</div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-group">
+        <div class="footer-heading">Industries</div>
+        <ul>
+          <li>Energy</li>
+          <li>Construction</li>
+          <li>Consulting</li>
+          <li>Information Technology</li>
+          <li>Port Services</li>
+        </ul>
+      </div>
+      <div class="footer-group">
+        <div class="footer-heading">Company</div>
+        <ul>
+          <li>About</li>
+          <li>Portfolio</li>
+          <li>Blog</li>
+          <li>News</li>
+          <li>Contact Us</li>
+          <li>FAQ</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <form class="footer-newsletter">
+        <input type="email" placeholder="Enter Email Address" />
+        <button type="submit">Submit</button>
+      </form>
+      <div class="footer-socials">
+        <a href="#" class="footer-social" aria-label="Facebook">
+          <span class="footer-circle">
+            <img src="images/facebook.png" alt="Facebook" />
+          </span>
+        </a>
+        <a href="#" class="footer-social" aria-label="Twitter">
+          <span class="footer-circle">
+            <img src="images/twitter.png" alt="Twitter" />
+          </span>
+        </a>
+        <a href="#" class="footer-social" aria-label="Instagram">
+          <span class="footer-circle">
+            <img src="images/instagram.png" alt="Instagram" />
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2011 - 2022 Company name | All rights reserved
+  </div>
+</footer>
+</body>
+</html>
